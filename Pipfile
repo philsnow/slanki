@@ -7,6 +7,9 @@ name = "pypi"
 
 [packages]
 genanki = "*"
+python-dotenv = "*"
+requests = "*"
+pprint = "*"
 
 [requires]
 python_version = "3.7"
