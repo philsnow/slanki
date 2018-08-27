@@ -1,0 +1,23 @@
+* Slanki
+
+Slanki is a quick and dirty tool that queries users from a Slack team and then uses [[https://github.com/kerrickstaley/genanki][genanki]] to create an Anki deck with a set of really simple FullName / Photo cards for each person in the Slack team.
+
+** Getting started
+
+Copy/rename ~.env-sample~ to ~.env~, and then the only value you actually need to change is the ~SLACK_API_TOKEN~.  To get that, you'll either need to create a Slack app or maybe use a legacy token (I don't know if a legacy token would work, YMMV).
+
+*** Setting up a Slack app
+
+I created an App at [[https://api.slack.com/apps?new_app=1]] , with OAuth scopes ~identity.avatar:read:user~, ~users:read~, and ~users.profile:read~.
+
+*** Generate an API token
+
+On my app's "OAuth & Permission" tab, I generated a workspace token.  That token looks like ~xoxo-12345-56789-8675309-whatever~.  Take that token and put it in your ~.env~ file as the ~SLACK_API_TOKEN~.
+
+** Run it
+
+You can run it with ~pipenv run python slanki.py~; it should churn for a while downloading avatar images into a temporary directory.  Finally it should pop out an ~.apkg~ file suitable for loading into Anki.
+
+** Caveats
+
+If your Slack team is anything like mine, you'll have dozens of bot accounts / fake users from integrations, so you'll either want to prune them from your Anki deck by hand or else add their names to the ~set(['slackbot'])~ of excluded names.
