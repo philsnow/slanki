@@ -1,15 +1,14 @@
 import json
-import requests
 import os
-import pprint
-import random
 import shutil
 import sys
 import tempfile
 import urllib.request
 
 import genanki
+import requests
 from dotenv import load_dotenv
+
 load_dotenv()
 
 SLACK_API_TOKEN = os.getenv('SLACK_API_TOKEN')
